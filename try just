@@ -1,2 +1,0 @@
-client.on('message', async msg =>{
-    if(command === `link`) {

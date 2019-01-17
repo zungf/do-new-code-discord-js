@@ -1,0 +1,264 @@
+this code you put it in the top of your file (source)
+
+
+
+
+
+
+
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
+});
+
+client.login('token');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this code show you your profile in discord
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+    const prefix = 'your prefix'
+var args = message.content.split(" ").slice(1);    
+if(message.content.startsWith(prefix + 'id')) {
+var year = message.author.createdAt.getFullYear()
+var month = message.author.createdAt.getMonth()
+var day = message.author.createdAt.getDate()
+var men = message.mentions.users.first();  
+let args = message.content.split(' ').slice(1).join(' ');
+if (args == '') {
+var z = message.author;
+}else {
+var z = message.mentions.users.first();
+}
+
+let d = z.createdAt;          
+let n = d.toLocaleString();   
+let x;                       
+let y;                        
+
+if (z.presence.game !== null) {
+y = `${z.presence.game.name}`;
+} else {
+y = "Not Playing....";
+}
+let embed = new Discord.RichEmbed()
+.setColor("#502faf")
+.addField('Name :',`**<@` + `${z.id}` + `>**`, true)
+.addField('ID :', "**"+ `${z.id}` +"**",true)
+.addField('Playing :','**'+y+'**' , true)
+.addField('Discrim :',"**#" +  `${z.discriminator}**`,true)
+.addField('**Created At**', message.author.createdAt.toLocaleString())
+.addField("**Joined At**", message.member.joinedAt.toLocaleString())    
+
+.setThumbnail(`${z.avatarURL}`)
+.setFooter(message.author.username, message.author.avatarURL)
+
+message.channel.send({embed});
+    if (!message) return message.reply('**ضع المينشان بشكل صحيح  ❌ **').catch(console.error);
+
+}
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this  code for info of ur server 
+
+arabic : 
+
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`__**ServerInfo**__`)
+      .addField('**اسم السيرفر**',`[** __${msg.guild.name}__ **]`,true)
+      .addField('**نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+      .addField('**عدد الاعضاء**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('**عدد البشريين**',`[** __${msg.guild.memberCount - msg.guild.members.filter(m => m.user.bot).size}__ **]`,true)
+      .addField('**عدد البوتات**',`[** __${msg.guild.members.filter(m => m.user.bot).size}__ **]`,true)
+      .addField('**عدد الاعضاء الاونلاين**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField('**الرومات**',`[**${msg.guild.channels.filter(m => m.type === 'text').size}** **text | Voice** **${msg.guild.channels.filter(m => m.type === 'voice').size}**]`,true)
+      .addField('**الأونـر**',`**${msg.guild.owner}**`,true)
+      .addField('**ايدي السيرفر**',`[** __${msg.guild.id}__ **]`,true)
+      .addField('**الرتب**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('**تاريخ انشاء السيرفر**',`[** __${msg.guild.createdAt.toLocaleString()}__ **]`, true)
+      msg.channel.send({embed:embed});
+    }
+  });    
+
+
+
+english :
+
+client.on('message', function(msg) {
+    if(msg.content.startsWith (prefix  + 'server')) {
+      let embed = new Discord.RichEmbed()
+      .setColor('RANDOM')
+      .setThumbnail(msg.guild.iconURL)
+      .setTitle(`__**ServerInfo**__`)
+      .addField('**Name Of Server**',`[** __${msg.guild.name}__ **]`,true)
+      .addField('**Type Of Server**',`[** __${msg.guild.region}__ **]`,true)
+      .addField('**Members Count**',`[** __${msg.guild.memberCount}__ **]`,true)
+      .addField('**Number of human beings**',`[** __${msg.guild.memberCount - msg.guild.members.filter(m => m.user.bot).size}__ **]`,true)
+      .addField('**Number of Bots**',`[** __${msg.guild.members.filter(m => m.user.bot).size}__ **]`,true)
+      .addField('**Number of members online**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+      .addField('**Rooms**',`[**${msg.guild.channels.filter(m => m.type === 'text').size}** **text | Voice** **${msg.guild.channels.filter(m => m.type === 'voice').size}**]`,true)
+      .addField('**Owner Ship**',`**${msg.guild.owner}**`,true)
+      .addField('**Id Server**',`[** __${msg.guild.id}__ **]`,true)
+      .addField('**Roles**',`[** __${msg.guild.roles.size}__ **]`,true)
+      .addField('**Date of creation of the server**',`[** __${msg.guild.createdAt.toLocaleString()}__ **]`, true)
+      msg.channel.send({embed:embed});
+    }
+  });    
+
+
+
+
+this code change your playing and your name just put your id please don't use it for your profile he is forbidden for profiles only for bots
+
+
+client.on('message', function(message) {
+	const myID = "244888652004458497";
+    let args = message.content.split(" ").slice(1).join(" ");
+    if(message.content.startsWith(prefix + "setname")) {
+		        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setUsername(args);
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "stream")) {
+		        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setGame(args , 'https://twitch.tv/6xlez1');
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "listen")) {
+				        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'LISTENING'});
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "watch")) {
+				        if(message.author.id !== myID) return;
+            if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+        client.user.setActivity(args, {type:'WATCHING'});
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    } else if(message.content.startsWith(prefix + "setavatar")) {
+				        if(message.author.id !== myID) return;
+        client.user.setAvatar(args);
+        message.channel.send(':white_check_mark: Done!').then(msg => {
+                if(!args) return message.reply('اكتب الحالة اللي تريدها.');
+           msg.delete(5000);
+          message.delete(5000);
+        });
+    }
+
+
+
+
+
+
+
+this code if you type restart , your bot will be restarted if your bot has lag 
+
+ client.on('message',async message => {
+    if(message.content.startsWith(prefix + "restart")) {
+        if(message.author.id !== "244888652004458497") return message.reply('You aren\'t the bot owner.');
+        message.channel.send('**Restarting.**').then(msg => {
+            setTimeout(() => {
+               msg.edit('**Restarting..**');
+            },1000);
+            setTimeout(() => {
+               msg.edit('**Restarting...**');
+            },2000);
+        });
+        console.log(`${message.author.tag} [ ${message.author.id} ] has restarted the bot.`);
+        console.log(`Restarting..`);
+        setTimeout(() => {
+            client.destroy();
+            client.login('process.env.BOT_TOKEN');
+        },3000);
+    }
+});
+  
+});
+
+
+
+
+
+
+
+
+
+
+this code for to know ping of ur bot 
+
+
+  client.on("message", message => {
+      if (message.content === "ping") {
+      const embed = new Discord.RichEmbed()
+  .setColor("RANDOM")
+  .addField('**Ping:**' , `${Date.now() - message.createdTimestamp}` + ' ms')
+  message.channel.sendEmbed(embed);
+    }
+});
